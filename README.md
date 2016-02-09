@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/shogo82148/p5-Redis-Transaction.png?branch=master)](https://travis-ci.org/shogo82148/p5-Redis-Transaction)
 # NAME
 
 Redis::Transaction - utilities for handling transactions of Redis
