@@ -84,15 +84,71 @@ __END__
 
 =head1 NAME
 
-Redis::Transaction - It's new $module
+Redis::Transaction - utilities for handling transactions of Redis
 
 =head1 SYNOPSIS
 
-    use Redis::Transaction;
+    use Redis;
+    use Redis::Transaction qw/multi_exec watch_multi_exec/;
+    
+    # atomically increment foo and bar. It will execute following commands typically.
+    # > MULTI
+    # > INCR foo
+    # > INCR bar
+    # > EXEC
+    multi_exec Redis->new, 10, sub {
+        my $redis = shift;
+        $redis->incr('foo');
+        $redis->incr('bar');
+    };
+    
+    # atomically increment the value of a key by 1 (let's suppose Redis doesn't have INCR).
+    # It will execute following commands typically.
+    # > WATCH mykey
+    # > GET mykey
+    # > MULTI
+    # > SET mykey, 1
+    # > EXEC
+    watch_multi_exec Redis->new, ['mykey'], 10, sub {
+        my $redis = shift;
+        return $redis->get('mykey');
+    }, sub {
+        my ($redis, $value) = @_;
+        $redis->set('mykey', $value + 1);
+    };
 
 =head1 DESCRIPTION
 
-Redis::Transaction is ...
+Redis::Transaction is utilities for handling transactions of Redis.
+
+=head1 FUNCTIONS
+
+=head2 C<<multi_exec($redis:Redis, $retry_count:Int, $code:Code)>>
+
+Queue commands and execute them atomically.
+
+=head2 C<<watch_multi_exec($redis:Redis, $watch_keys:ArrayRef, $retry_count:Int, $watch_code:Code, $exec_code:Code)>>
+
+Queue commands and execute them atomically.
+C<watch_multi_exec> will retry C<$watch_code> and C<$exec_code> if C<$watch_keys> are changed by another client.
+
+=head1 SEE ALSO
+
+=over 4
+
+=item *
+
+L<Redis.pm|https://metacpan.org/pod/Redis>
+
+=item *
+
+L<Redis::Fast|https://metacpan.org/pod/Redis::Fast>
+
+=item *
+
+L<Description of Transactions|http://redis.io/topics/transactions>
+
+=back
 
 =head1 LICENSE
 
