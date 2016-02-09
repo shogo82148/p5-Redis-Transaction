@@ -39,11 +39,11 @@ Redis::Transaction is utilities for handling transactions of Redis.
 
 # FUNCTIONS
 
-## `<multi_exec($redis:Redis, $retry_count:Int, $code:Code)`>
+## `multi_exec($redis:Redis, $retry_count:Int, $code:Code)`
 
 Queue commands and execute them atomically.
 
-## `<watch_multi_exec($redis:Redis, $watch_keys:ArrayRef, $retry_count:Int, $watch_code:Code, $exec_code:Code)`>
+## `watch_multi_exec($redis:Redis, $watch_keys:ArrayRef, $retry_count:Int, $watch_code:Code, $exec_code:Code)`
 
 Queue commands and execute them atomically.
 `watch_multi_exec` will retry `$watch_code` and `$exec_code` if `$watch_keys` are changed by another client.
