@@ -1,5 +1,5 @@
 {
-   "abstract" : "It's new $module",
+   "abstract" : "utilities for handling transactions of Redis",
    "author" : [
       "@gmail.com>"
    ],
@@ -48,10 +48,28 @@
       },
       "test" : {
          "requires" : {
-            "Test::More" : "0.98"
+            "Redis" : "0",
+            "Sub::Retry" : "0",
+            "Test::More" : "0.98",
+            "Test::RedisServer" : "0",
+            "Test::TCP" : "0"
          }
       }
    },
    "release_status" : "unstable",
-   "version" : "0.01"
+   "resources" : {
+      "bugtracker" : {
+         "web" : "https://github.com/shogo82148/p5-Redis-Transaction/issues"
+      },
+      "homepage" : "https://github.com/shogo82148/p5-Redis-Transaction",
+      "repository" : {
+         "type" : "git",
+         "url" : "git://github.com/shogo82148/p5-Redis-Transaction.git",
+         "web" : "https://github.com/shogo82148/p5-Redis-Transaction"
+      }
+   },
+   "version" : "0.01",
+   "x_contributors" : [
+      "Ichinose Shogo <shogo82148@gmail.com>"
+   ]
 }
