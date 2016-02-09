@@ -11,5 +11,6 @@ sudo: false
 env:
   - REDIS_BACKEND=Redis
   - REDIS_BACKEND=Redis::Fast
-after_install:
-  - cpanm $REDIS_BACKEND
+install:
+  - cpanm --quiet --installdeps --notest .
+  - cpanm --quiet --notest $REDIS_BACKEND
