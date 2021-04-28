@@ -38,13 +38,25 @@ jobs:
               '3.0',
               '2.8',
           ]
+          backend = [
+              'Redis',
+              'Redis::Fast',
+          ]
           includes = []
           for r in redis:
-              includes.append({'perl': perl[0], 'redis': r, 'os': 'macos-latest'})
+              for b in backend:
+                  includes.append({
+                      'perl': perl[0],
+                      'redis': r,
+                      'os': 'macos-latest',
+                      'backend': b,
+                  })
+
           matrix = {
               'perl': perl,
               'redis': redis,
               'os': ['ubuntu-latest'],
+              'backend': backend,
               'include': includes
           }
           output = json.dumps(matrix, separators=(',', ':'))
@@ -86,7 +98,7 @@ jobs:
 
       - name: Install
         run: |
-          cpm install -L local --show-build-log-on-failure Minilla
+          cpm install -L local --show-build-log-on-failure Minilla Redis Redis::Fast
           cpm install -L local --show-build-log-on-failure --with-develop
           echo "PERL5LIB=$(pwd)/local/lib/perl5" >> "$GITHUB_ENV"
           echo "$(pwd)/local/bin" >> "$GITHUB_PATH"
@@ -94,3 +106,5 @@ jobs:
       - name: Test
         run: |
           minil test
+        env:
+          REDIS_BACKEND: ${{ matrix.backend }}
