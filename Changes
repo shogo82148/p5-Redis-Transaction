@@ -1,6 +1,7 @@
 Revision history for Perl extension Redis-Transaction
 
 {{$NEXT}}
+    - fix #2. ignore SIGPIPE in tests
 
 0.01 2016-03-11T11:01:23Z
 
