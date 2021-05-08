@@ -76,32 +76,21 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Set up Perl ${{ matrix.perl }}
-        uses: shogo82148/actions-setup-perl@v1
+        uses: shogo82148/actions-setup-perl@v1.12.0-rc1
         with:
           perl-version: ${{ matrix.perl }}
+          install-modules-with: cpm
+          install-modules-args: --with-develop
+          install-modules: |
+            Minilla
+            Redis
+            Redis::Fast
 
       - name: Set up Redis ${{ matrix.redis }}
         uses: shogo82148/actions-setup-redis@v1
         with:
           redis-version: ${{ matrix.redis }}
           auto-start: false
-
-      - name: Cache CPAN modules
-        uses: actions/cache@v2
-        with:
-          path: |
-            local
-          key: ${{ runner.os }}-perl-${{ matrix.perl }}-${{ hashFiles('**/cpanfile') }}
-          restore-keys: |
-            ${{ runner.os }}-perl-${{ matrix.perl }}-${{ hashFiles('**/cpanfile') }}
-            ${{ runner.os }}-perl-${{ matrix.perl }}-
-
-      - name: Install
-        run: |
-          cpm install -L local --show-build-log-on-failure Minilla Redis Redis::Fast
-          cpm install -L local --show-build-log-on-failure --with-develop
-          echo "PERL5LIB=$(pwd)/local/lib/perl5" >> "$GITHUB_ENV"
-          echo "$(pwd)/local/bin" >> "$GITHUB_PATH"
 
       - name: Test
         run: |
