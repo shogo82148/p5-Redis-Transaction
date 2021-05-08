@@ -81,7 +81,10 @@ jobs:
           perl-version: ${{ matrix.perl }}
           install-modules-with: cpm
           install-modules-args: --with-develop
-          install-modules: Minilla Redis Redis::Fast
+          install-modules: |
+            Minilla
+            Redis
+            Redis::Fast
 
       - name: Set up Redis ${{ matrix.redis }}
         uses: shogo82148/actions-setup-redis@v1
