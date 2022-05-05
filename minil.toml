@@ -1,2 +1,2 @@
 name = "Redis-Transaction"
-badges = ["travis"]
+badges = ["github-actions/test.yml", "metacpan"]

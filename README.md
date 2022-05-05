@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/shogo82148/p5-Redis-Transaction.svg?branch=master)](https://travis-ci.org/shogo82148/p5-Redis-Transaction)
+[![Actions Status](https://github.com/shogo82148/p5-Redis-Transaction/actions/workflows/test.yml/badge.svg)](https://github.com/shogo82148/p5-Redis-Transaction/actions) [![MetaCPAN Release](https://badge.fury.io/pl/Redis-Transaction.svg)](https://metacpan.org/release/Redis-Transaction)
 # NAME
 
 Redis::Transaction - utilities for handling transactions of Redis
@@ -57,11 +57,11 @@ Queue commands and execute them atomically.
 
 # LICENSE
 
-Copyright (C) Ichinose Shogo.
+Copyright (C) ICHINOSE Shogo.
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.
 
 # AUTHOR
 
-Ichinose Shogo <shogo82148@gmail.com>
+ICHINOSE Shogo <shogo82148@gmail.com>

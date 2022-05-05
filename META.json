@@ -1,10 +1,10 @@
 {
    "abstract" : "utilities for handling transactions of Redis",
    "author" : [
-      "Ichinose Shogo <shogo82148@gmail.com>"
+      "ICHINOSE Shogo <shogo82148@gmail.com>"
    ],
    "dynamic_config" : 0,
-   "generated_by" : "Minilla/v3.1.12, CPAN::Meta::Converter version 2.150010",
+   "generated_by" : "Minilla/v3.1.16, CPAN::Meta::Converter version 2.150010",
    "license" : [
       "perl_5"
    ],
@@ -63,11 +63,11 @@
       "homepage" : "https://github.com/shogo82148/p5-Redis-Transaction",
       "repository" : {
          "type" : "git",
-         "url" : "git://github.com/shogo82148/p5-Redis-Transaction.git",
+         "url" : "https://github.com/shogo82148/p5-Redis-Transaction.git",
          "web" : "https://github.com/shogo82148/p5-Redis-Transaction"
       }
    },
    "version" : "0.02",
-   "x_serialization_backend" : "JSON::PP version 4.04",
+   "x_serialization_backend" : "JSON::PP version 4.06",
    "x_static_install" : 1
 }
