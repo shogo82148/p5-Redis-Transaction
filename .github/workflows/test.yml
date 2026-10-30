@@ -76,10 +76,10 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v5
+        uses: actions/checkout@v5.1.0
 
       - name: Set up Perl ${{ matrix.perl }}
-        uses: shogo82148/actions-setup-perl@v1
+        uses: shogo82148/actions-setup-perl@v1.44.4
         with:
           perl-version: ${{ matrix.perl }}
           install-modules-with: cpm
@@ -90,7 +90,7 @@ jobs:
             Redis::Fast
 
       - name: Set up Redis ${{ matrix.redis }}
-        uses: shogo82148/actions-setup-redis@v1
+        uses: shogo82148/actions-setup-redis@v1.60.0
         with:
           redis-version: ${{ matrix.redis }}
           auto-start: false
