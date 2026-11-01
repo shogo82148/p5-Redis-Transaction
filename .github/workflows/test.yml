@@ -21,14 +21,7 @@ jobs:
               '5.30',
               '5.28',
               '5.26',
-              '5.24',
-              '5.22',
-              '5.20',
-              '5.18',
-              '5.16',
-              '5.14',
-              '5.12',
-              '5.10'
+              '5.24'
           ]
           redis = [
               '7.0',
@@ -76,10 +69,10 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v5
+        uses: actions/checkout@v5.1.0
 
       - name: Set up Perl ${{ matrix.perl }}
-        uses: shogo82148/actions-setup-perl@v1
+        uses: shogo82148/actions-setup-perl@v1.44.4
         with:
           perl-version: ${{ matrix.perl }}
           install-modules-with: cpm
@@ -90,7 +83,7 @@ jobs:
             Redis::Fast
 
       - name: Set up Redis ${{ matrix.redis }}
-        uses: shogo82148/actions-setup-redis@v1
+        uses: shogo82148/actions-setup-redis@v1.60.0
         with:
           redis-version: ${{ matrix.redis }}
           auto-start: false
